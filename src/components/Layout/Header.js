@@ -1,6 +1,8 @@
 // this component will hold my header code
 import { Fragment } from "react";
 
+import HeaderCartButton from "./HeaderCartButton";
+
 import mealsImage from "../../assets/meals.jpg";
 import classes from "./Header.module.css";
 
@@ -10,7 +12,7 @@ const Header = (props) => {
       {/* this header using the built in header Component */}
       <header className={classes.header}>
         <h1>ReactMeals</h1>
-        <button>Cart</button>
+        <HeaderCartButton />
       </header>
 
       {/* this div will hold the image */}
