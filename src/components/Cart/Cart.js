@@ -1,5 +1,7 @@
 // Cart components should render all the Cart items and display the total amount.
 
+import Modal from "../UI/Modal";
+
 import classes from "./Cart.module.css";
 
 const Cart = () => {
@@ -12,7 +14,7 @@ const Cart = () => {
   );
 
   return (
-    <div>
+    <Modal>
       {cartItems}
 
       {/*the total amount*/}
@@ -27,7 +29,7 @@ const Cart = () => {
         {/*we will only render the Order button when we have items in the Cart*/}
         <button className={classes.button}>Order</button>
       </div>
-    </div>
+    </Modal>
   );
 };
 
