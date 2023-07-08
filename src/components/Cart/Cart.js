@@ -4,7 +4,7 @@ import Modal from "../UI/Modal";
 
 import classes from "./Cart.module.css";
 
-const Cart = () => {
+const Cart = (props) => {
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {[{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (
@@ -14,7 +14,7 @@ const Cart = () => {
   );
 
   return (
-    <Modal>
+    <Modal onClose={props.onClose}>
       {cartItems}
 
       {/*the total amount*/}
@@ -25,7 +25,9 @@ const Cart = () => {
 
       {/*the actions for the Cart*/}
       <div className={classes.actions}>
-        <button className={classes["button--alt"]}>Close</button> {/**/}
+        <button className={classes["button--alt"]} onClick={props.onClose}>
+          Close
+        </button>
         {/*we will only render the Order button when we have items in the Cart*/}
         <button className={classes.button}>Order</button>
       </div>
