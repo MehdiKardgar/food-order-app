@@ -12,7 +12,7 @@ const Header = (props) => {
       {/* this header using the built in header Component */}
       <header className={classes.header}>
         <h1>ReactMeals</h1>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.onShowCart} />
       </header>
 
       {/* this div will hold the image */}
