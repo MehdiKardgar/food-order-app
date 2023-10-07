@@ -10,12 +10,19 @@ import classes from "./AvailableMeals.module.css";
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isloading, setIsloading] = useState(true);
+  const [httpError, setHttpError] = useState(null); // when we fetch data and we fail, I set my error.
 
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
         "http://react-http-6b4a6.firebaceio.com/meals.json"
       );
+
+      //  find out if "fetch data" failed
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
       const responseData = await response.json(); // parse data
 
       const loadedMeals = [];
@@ -34,7 +41,10 @@ const AvailableMeals = () => {
       setIsloading(false);
     };
 
-    fetchMeals();
+    fetchMeals().catch((error) => {
+      setIsloading(false); // because we're not loading anymore
+      setHttpError(error.message);
+    });
   }, []);
 
   //  set Loading text before I tried to map my meals
@@ -42,6 +52,14 @@ const AvailableMeals = () => {
     return (
       <section className={classes.MealsLoading}>
         <p>Loading...</p>
+      </section>
+    );
+  }
+
+  if (httpError) {
+    return (
+      <section className={classes.MealsError}>
+        <p>{httpError}</p>
       </section>
     );
   }
