@@ -52,6 +52,14 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return; // to not continue with code execution
     }
+
+    // with "props.onConfirm()" we pass the data from the checkout component to the cart component.
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
   };
 
   // style
