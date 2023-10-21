@@ -15,7 +15,7 @@ const AvailableMeals = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
-        "http://react-http-6b4a6.firebaceio.com/meals.json"
+        "https://react-http-3960f-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
       );
 
       //  find out if "fetch data" failed
